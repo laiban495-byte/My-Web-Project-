@@ -1,0 +1,2339 @@
+/* =====================================================
+   NICE TAILORS
+   COMPLETE WEBSITE CSS
+===================================================== */
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #080808;
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+:root {
+    --gold: #d4af37;
+    --gold-light: #f0d77a;
+    --black: #080808;
+    --dark: #0d0d0d;
+    --grey: #999999;
+}
+
+
+/* =====================================================
+   FIRST PAGE
+===================================================== */
+
+.intro-screen {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background: #000000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    z-index: 9999;
+
+    overflow: hidden;
+}
+
+
+/* IMPORTANT:
+   No yellow background glow
+*/
+
+.intro-screen::before,
+.intro-screen::after {
+    display: none !important;
+    content: none !important;
+}
+
+
+.intro-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =====================================================
+   FIRST PAGE LOGO
+===================================================== */
+
+.logo-button {
+    border: none;
+    background: transparent;
+    padding: 0;
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.intro-logo {
+    width: 260px;
+    height: 260px;
+
+    max-width: 70vw;
+    max-height: 40vh;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin: 0 auto;
+
+    /* Blend logo with background */
+    mix-blend-mode: screen;
+
+    /* NO GLOW */
+    filter: none !important;
+    box-shadow: none !important;
+
+    opacity: 0;
+
+    animation:
+        introLogoAppear 1.5s ease forwards;
+
+    transition:
+        transform 0.4s ease;
+}
+
+
+.intro-logo:hover {
+    transform: scale(1.05);
+}
+
+
+@keyframes introLogoAppear {
+
+    0% {
+        opacity: 0;
+        transform: scale(0.75);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =====================================================
+   INTRO TEXT
+===================================================== */
+
+.intro-title {
+    margin-top: 25px;
+
+    color: #ffffff;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 55px;
+
+    letter-spacing: 7px;
+
+    opacity: 0;
+
+    animation:
+        textReveal 1s ease 0.7s forwards;
+}
+
+
+.intro-subtitle {
+    margin-top: 5px;
+
+    color: #888;
+
+    font-size: 11px;
+
+    letter-spacing: 6px;
+
+    opacity: 0;
+
+    animation:
+        textReveal 1s ease 1s forwards;
+}
+
+
+.click-indicator {
+    margin-top: 35px;
+
+    color: var(--gold);
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    opacity: 0;
+
+    animation:
+        textReveal 1s ease 1.3s forwards;
+}
+
+
+.indicator-line {
+    width: 25px;
+    height: 1px;
+
+    background: var(--gold);
+
+    margin: 10px auto;
+
+    animation:
+        linePulse 2s ease-in-out infinite;
+}
+
+
+@keyframes textReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes linePulse {
+
+    0% {
+        width: 20px;
+    }
+
+    50% {
+        width: 80px;
+    }
+
+    100% {
+        width: 20px;
+    }
+}
+
+
+/* =====================================================
+   INTRO EXIT
+===================================================== */
+
+.intro-exit {
+    animation:
+        introExit 0.8s ease forwards;
+}
+
+
+@keyframes introExit {
+
+    to {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+}
+
+
+/* =====================================================
+   MAIN WEBSITE
+===================================================== */
+
+.website {
+    display: none;
+
+    opacity: 0;
+}
+
+
+.website-show {
+    display: block;
+
+    animation:
+        websiteShow 1s ease forwards;
+}
+
+
+@keyframes websiteShow {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    z-index: 1000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 15px 6%;
+
+    background: rgba(8, 8, 8, 0.9);
+
+    backdrop-filter: blur(15px);
+
+    border-bottom:
+        1px solid rgba(212, 175, 55, 0.12);
+}
+
+
+.header.scrolled {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.brand img {
+    width: 52px;
+    height: 52px;
+
+    object-fit: contain;
+
+    mix-blend-mode: screen;
+
+    filter: none;
+}
+
+
+.brand-text h2 {
+    color: var(--gold);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 25px;
+}
+
+
+.brand-text span {
+    font-size: 7px;
+
+    letter-spacing: 3px;
+
+    color: #aaa;
+}
+
+
+nav {
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+}
+
+
+nav a {
+    position: relative;
+
+    color: #ddd;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    transition: 0.3s ease;
+}
+
+
+nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -8px;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--gold);
+
+    transition: 0.3s ease;
+}
+
+
+nav a:hover {
+    color: var(--gold);
+}
+
+
+nav a:hover::after {
+    width: 100%;
+}
+
+
+.menu-button {
+    display: none;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--gold);
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    background: #080808;
+
+    overflow: hidden;
+}
+
+
+/* No yellow glow */
+
+.hero::before {
+    display: none;
+}
+
+
+.hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 800px;
+
+    padding: 120px 20px 60px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =====================================================
+   MAIN CENTER LOGO
+===================================================== */
+
+.hero-logo {
+    width: 190px;
+
+    height: 190px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin: 0 auto 25px;
+
+    mix-blend-mode: screen;
+
+    filter: none !important;
+
+    box-shadow: none !important;
+
+    animation:
+        heroLogo 1.2s ease both;
+}
+
+
+@keyframes heroLogo {
+
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =====================================================
+   HERO TEXT
+===================================================== */
+
+.eyebrow {
+    color: var(--gold);
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+}
+
+
+.hero h1 {
+    margin-top: 15px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(55px, 9vw, 105px);
+
+    line-height: 0.9;
+
+    letter-spacing: 5px;
+
+    color: #fff;
+}
+
+
+.hero h2 {
+    margin-top: 18px;
+
+    color: var(--gold);
+
+    font-size: 15px;
+
+    letter-spacing: 10px;
+}
+
+
+.hero p {
+    max-width: 600px;
+
+    margin: 25px auto;
+
+    color: #aaa;
+
+    line-height: 1.8;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.hero-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 30px;
+}
+
+
+.gold-button,
+.outline-button {
+    display: inline-block;
+
+    padding: 14px 28px;
+
+    border-radius: 50px;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    transition: 0.3s ease;
+
+    cursor: pointer;
+}
+
+
+.gold-button {
+    background: var(--gold);
+
+    color: #080808;
+
+    border: 1px solid var(--gold);
+}
+
+
+.outline-button {
+    border: 1px solid var(--gold);
+
+    color: var(--gold);
+
+    background: transparent;
+}
+
+
+.gold-button:hover {
+    transform: translateY(-4px);
+}
+
+
+.outline-button:hover {
+    background: var(--gold);
+
+    color: #080808;
+
+    transform: translateY(-4px);
+}
+
+
+/* =====================================================
+   SCROLL
+===================================================== */
+
+.scroll-down {
+    position: absolute;
+
+    bottom: 30px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: #777;
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+}
+
+
+.scroll-down div {
+    width: 1px;
+
+    height: 45px;
+
+    background: var(--gold);
+
+    margin: 10px auto;
+
+    animation:
+        scrollLine 1.5s infinite;
+}
+
+
+@keyframes scrollLine {
+
+    0% {
+        transform: scaleY(0.2);
+        transform-origin: top;
+    }
+
+    50% {
+        transform: scaleY(1);
+    }
+
+    100% {
+        transform: scaleY(0.2);
+        transform-origin: bottom;
+    }
+}
+
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+.section {
+    padding: 110px 8%;
+
+    background: var(--black);
+}
+
+
+.dark-section {
+    background: #0d0d0d;
+}
+
+
+.section-heading {
+    max-width: 700px;
+
+    margin: 0 auto 60px;
+
+    text-align: center;
+}
+
+
+.section-heading span {
+    color: var(--gold);
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+}
+
+
+.section-heading h2 {
+    margin-top: 10px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 55px;
+
+    font-weight: 500;
+}
+
+
+.section-heading p {
+    margin-top: 12px;
+
+    color: #888;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   REVEAL
+===================================================== */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(40px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+
+.reveal.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+.about-grid {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1.3fr 0.7fr;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+
+.small-gold {
+    color: var(--gold);
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+}
+
+
+.about-text h3 {
+    margin:
+        15px 0 25px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 55px;
+
+    font-weight: 500;
+
+    line-height: 0.95;
+}
+
+
+.about-text p {
+    max-width: 600px;
+
+    margin-bottom: 18px;
+
+    color: #999;
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+.text-link {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    color: var(--gold);
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =====================================================
+   YEAR
+===================================================== */
+
+.about-year {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+.year-circle {
+    width: 280px;
+
+    height: 280px;
+
+    border:
+        1px solid rgba(212,175,55,0.5);
+
+    border-radius: 50%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    animation:
+        circleFloat 5s ease-in-out infinite;
+}
+
+
+@keyframes circleFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+
+.year-circle span {
+    color: #888;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+}
+
+
+.year-circle strong {
+    color: var(--gold);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 80px;
+
+    line-height: 1;
+}
+
+
+.year-circle small {
+    color: #888;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+
+/* =====================================================
+   SERVICES
+===================================================== */
+
+/* =====================================================
+   SERVICES — NICE TAILORS
+===================================================== */
+
+.service-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+
+/* SERVICE CARD */
+
+.service-card {
+    position: relative;
+
+    padding: 38px 28px;
+
+    min-height: 360px;
+
+    background: #0b0b0b;
+
+    border: 1px solid rgba(212,175,55,.18);
+
+    overflow: hidden;
+
+    transition:
+        transform .45s ease,
+        border-color .45s ease,
+        background .45s ease;
+}
+
+
+/* TOP GOLD LINE */
+
+.service-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--gold);
+
+    transition: width .5s ease;
+}
+
+
+/* HOVER */
+
+.service-card:hover {
+    transform: translateY(-10px);
+
+    border-color:
+        rgba(212,175,55,.65);
+
+    background: #101010;
+}
+
+.service-card:hover::before {
+    width: 100%;
+}
+
+
+/* NUMBER */
+
+.service-number {
+    color: #444;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    transition: .3s ease;
+}
+
+.service-card:hover .service-number {
+    color: var(--gold);
+}
+
+
+/* ICON */
+
+.service-icon {
+    margin-top: 32px;
+
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid
+        rgba(212,175,55,.35);
+
+    border-radius: 50%;
+
+    color: var(--gold);
+
+    font-size: 22px;
+
+    transition:
+        transform .4s ease,
+        background .4s ease;
+}
+
+.service-card:hover .service-icon {
+    transform: rotate(10deg) scale(1.08);
+
+    background:
+        rgba(212,175,55,.08);
+}
+
+
+/* TITLE */
+
+.service-card h3 {
+    margin-top: 22px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 29px;
+
+    font-weight: 500;
+
+    color: #fff;
+}
+
+
+/* DESCRIPTION */
+
+.service-card p {
+    margin-top: 13px;
+
+    color: #888;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+
+/* SERVICE LIST */
+
+.service-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    margin-top: 20px;
+}
+
+.service-list span {
+    color: #aaa;
+
+    font-size: 10px;
+
+    letter-spacing: .5px;
+
+    transition: .3s ease;
+}
+
+.service-card:hover .service-list span {
+    color: #ddd;
+}
+
+
+/* =====================================================
+   SERVICES BOTTOM
+===================================================== */
+
+.services-bottom {
+    max-width: 800px;
+
+    margin: 80px auto 0;
+
+    text-align: center;
+}
+
+
+.services-line {
+    width: 60px;
+
+    height: 1px;
+
+    background: var(--gold);
+
+    margin: 0 auto 25px;
+}
+
+
+.services-bottom h3 {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 38px;
+
+    font-weight: 500;
+
+    line-height: 1.2;
+}
+
+
+.services-bottom h3 span {
+    color: var(--gold);
+}
+
+
+.services-bottom p {
+    max-width: 600px;
+
+    margin: 18px auto 30px;
+
+    color: #888;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 1000px) {
+
+    .service-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .service-grid {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+    .service-card {
+        min-height: auto;
+
+        padding: 32px 24px;
+    }
+
+    .services-bottom {
+        margin-top: 60px;
+    }
+
+    .services-bottom h3 {
+        font-size: 32px;
+    }
+
+}
+/* .service-grid {
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+
+.service-card {
+    position: relative;
+
+    padding: 40px 25px;
+
+    min-height: 300px;
+
+    border:
+        1px solid rgba(212,175,55,0.18);
+
+    background:
+        rgba(255,255,255,0.025);
+
+    transition:
+        transform 0.4s ease,
+        border 0.4s ease,
+        background 0.4s ease;
+}
+
+
+.service-card:hover {
+    transform: translateY(-12px);
+
+    border-color:
+        rgba(212,175,55,0.7);
+
+    background:
+        rgba(212,175,55,0.04);
+}
+
+
+.service-number {
+    color: #444;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+.service-icon {
+    margin-top: 35px;
+
+    color: var(--gold);
+
+    font-size: 35px;
+}
+
+
+.service-card h3 {
+    margin-top: 20px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 30px;
+
+    font-weight: 500;
+}
+
+
+.service-card p {
+    margin-top: 15px;
+
+    color: #888;
+
+    line-height: 1.7;
+
+    font-size: 12px;
+} */
+
+
+/* =====================================================
+   MOVING GALLERY
+===================================================== */
+
+.moving-gallery {
+    width: 100%;
+
+    overflow: hidden;
+
+    padding: 10px 0;
+}
+
+
+.gallery-track {
+    width: max-content;
+
+    display: flex;
+
+    gap: 18px;
+
+    animation:
+        galleryMove 30s linear infinite;
+}
+
+
+.gallery-track:hover {
+    animation-play-state: paused;
+}
+
+
+.gallery-item {
+    width: 270px;
+
+    height: 360px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(212,175,55,0.25);
+
+    flex-shrink: 0;
+}
+
+
+.gallery-item img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.6s ease;
+}
+
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+
+@keyframes galleryMove {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+
+/* =====================================================
+   INSTAGRAM
+===================================================== */
+
+.instagram-section {
+    background: #080808;
+
+    text-align: center;
+}
+
+
+.instagram-grid {
+    max-width: 1100px;
+
+    margin:
+        0 auto 40px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+
+.instagram-photo {
+    position: relative;
+
+    display: block;
+
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(212,175,55,0.25);
+}
+
+
+.instagram-photo img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.6s ease;
+}
+
+
+.instagram-photo span {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(0,0,0,0.65);
+
+    color: var(--gold);
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.4s ease;
+}
+
+
+.instagram-photo:hover img {
+    transform: scale(1.08);
+}
+
+
+.instagram-photo:hover span {
+    opacity: 1;
+}
+
+
+.instagram-button {
+    display: inline-block;
+
+    padding: 14px 30px;
+
+    border:
+        1px solid var(--gold);
+
+    border-radius: 50px;
+
+    color: var(--gold);
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    transition: 0.3s ease;
+}
+
+
+.instagram-button:hover {
+    background: var(--gold);
+
+    color: #080808;
+
+    transform: translateY(-4px);
+}
+
+
+/* =====================================================
+   AI TRY-ON
+===================================================== */
+
+/* .tryon-section {
+    text-align: center;
+}
+
+
+.tryon-container {
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+.tryon-card {
+    padding: 30px;
+
+    border:
+        1px solid rgba(212,175,55,0.25);
+
+    background:
+        rgba(255,255,255,0.025);
+
+    border-radius: 12px;
+}
+
+
+.step-number {
+    color: var(--gold);
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+}
+
+
+.tryon-card h3 {
+    margin-top: 12px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 30px;
+}
+
+
+.tryon-card > p {
+    margin-top: 8px;
+
+    color: #888;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+.upload-button {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding: 12px 22px;
+
+    border:
+        1px solid var(--gold);
+
+    border-radius: 30px;
+
+    color: var(--gold);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+
+.upload-button:hover {
+    background: var(--gold);
+
+    color: #080808;
+}
+
+
+.photo-preview,
+.result-preview {
+    height: 270px;
+
+    margin-top: 20px;
+
+    border:
+        1px dashed rgba(212,175,55,0.4);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    color: #666;
+
+    font-size: 11px;
+}
+
+
+.photo-preview img,
+.result-preview img {
+    display: none;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+}
+
+
+.outfit-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+
+.outfit-option {
+    padding: 5px;
+
+    background: transparent;
+
+    color: white;
+
+    border:
+        1px solid transparent;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+
+.outfit-option img {
+    display: block;
+
+    width: 100%;
+
+    height: 120px;
+
+    object-fit: cover;
+}
+
+
+.outfit-option span {
+    display: block;
+
+    padding: 7px 2px;
+
+    font-size: 9px;
+}
+
+
+.outfit-option:hover,
+.outfit-option.selected {
+    border-color: var(--gold);
+
+    color: var(--gold);
+}
+
+
+.tryon-button {
+    margin-top: 20px;
+
+    padding: 14px 25px;
+
+    border:
+        1px solid var(--gold);
+
+    border-radius: 50px;
+
+    background: var(--gold);
+
+    color: #080808;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+
+.tryon-button:hover:not(:disabled) {
+    background: transparent;
+
+    color: var(--gold);
+
+    transform: translateY(-3px);
+}
+
+
+.tryon-button:disabled {
+    opacity: 0.35;
+
+    cursor: not-allowed;
+}
+
+
+.tryon-note {
+    max-width: 700px;
+
+    margin: 30px auto 0;
+
+    color: #666;
+
+    font-size: 10px;
+
+    line-height: 1.6;
+}
+ */
+
+/* =====================================================
+   REVIEWS
+===================================================== */
+
+.reviews-section {
+    background: #080808;
+}
+
+
+.reviews-grid {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+.review-card {
+    padding: 30px;
+
+    border:
+        1px solid rgba(212,175,55,0.2);
+
+    background:
+        rgba(255,255,255,0.025);
+}
+
+
+.review-stars {
+    color: var(--gold);
+
+    letter-spacing: 2px;
+}
+
+
+.review-card h4 {
+    margin-top: 15px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 25px;
+}
+
+
+.review-card p {
+    margin-top: 10px;
+
+    color: #999;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+.review-form-container {
+    max-width: 700px;
+
+    margin: 70px auto 0;
+
+    padding: 35px;
+
+    border:
+        1px solid rgba(212,175,55,0.2);
+
+    background:
+        rgba(255,255,255,0.025);
+}
+
+
+.review-form-container h3 {
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 35px;
+}
+
+
+#reviewForm {
+    display: grid;
+
+    gap: 15px;
+}
+
+
+#reviewForm input,
+#reviewForm select,
+#reviewForm textarea {
+    width: 100%;
+
+    padding: 14px;
+
+    border:
+        1px solid rgba(255,255,255,0.15);
+
+    outline: none;
+
+    background: #111;
+
+    color: white;
+}
+
+
+#reviewForm input:focus,
+#reviewForm select:focus,
+#reviewForm textarea:focus {
+    border-color: var(--gold);
+}
+
+
+#reviewForm textarea {
+    resize: vertical;
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact-section {
+    background: #0d0d0d;
+}
+
+
+.contact-grid {
+    max-width: 1000px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+
+.contact-info h3 {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 45px;
+}
+
+
+.contact-info > p {
+    margin-top: 12px;
+
+    color: #888;
+
+    line-height: 1.7;
+
+    font-size: 13px;
+}
+
+
+.contact-item {
+    margin-top: 25px;
+}
+
+
+.contact-item > span {
+    color: var(--gold);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+
+.contact-item p,
+.contact-item a {
+    display: block;
+
+    margin-top: 6px;
+
+    color: #bbb;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+    transition: 0.3s ease;
+}
+
+
+.contact-item a:hover {
+    color: var(--gold);
+}
+
+
+.contact-actions {
+    display: grid;
+
+    gap: 15px;
+}
+
+
+.contact-button {
+    padding: 18px 25px;
+
+    border:
+        1px solid rgba(212,175,55,0.5);
+
+    color: var(--gold);
+
+    text-align: center;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    transition: 0.3s ease;
+}
+
+
+.contact-button:hover {
+    background: var(--gold);
+
+    color: #080808;
+
+    transform: translateX(8px);
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    padding: 60px 20px;
+
+    text-align: center;
+
+    background: #050505;
+
+    border-top:
+        1px solid rgba(212,175,55,0.15);
+}
+
+
+.footer-logo {
+    width: 80px;
+
+    height: 80px;
+
+    object-fit: contain;
+
+    margin-bottom: 15px;
+
+    mix-blend-mode: screen;
+}
+
+
+footer h3 {
+    color: var(--gold);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 30px;
+}
+
+
+footer p {
+    margin-top: 5px;
+
+    color: #777;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.footer-line {
+    width: 60px;
+
+    height: 1px;
+
+    background: var(--gold);
+
+    margin: 20px auto;
+}
+
+
+footer small {
+    color: #555;
+
+    font-size: 9px;
+}
+
+
+/* =====================================================
+   BACK TO TOP
+===================================================== */
+
+.back-to-top {
+    position: fixed;
+
+    right: 25px;
+
+    bottom: 25px;
+
+    width: 48px;
+
+    height: 48px;
+
+    border:
+        1px solid var(--gold);
+
+    border-radius: 50%;
+
+    background: #080808;
+
+    color: var(--gold);
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    z-index: 900;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: translateY(20px);
+
+    transition: 0.3s ease;
+}
+
+
+.back-to-top.visible {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+
+.back-to-top:hover {
+    background: var(--gold);
+
+    color: #080808;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1000px) {
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 9px;
+    }
+
+    .service-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .tryon-container {
+        grid-template-columns:
+            1fr;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .header {
+        padding: 12px 5%;
+    }
+
+
+    .brand-text {
+        display: none;
+    }
+
+
+    .menu-button {
+        display: block;
+    }
+
+
+    nav {
+        position: absolute;
+
+        top: 80px;
+
+        left: 5%;
+        right: 5%;
+
+        display: none;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 0;
+
+        background: #101010;
+
+        border:
+            1px solid rgba(212,175,55,0.2);
+    }
+
+
+    nav.open {
+        display: flex;
+    }
+
+
+    nav a {
+        padding: 15px;
+
+        border-bottom:
+            1px solid rgba(255,255,255,0.05);
+    }
+
+
+    .intro-logo {
+        width: 190px;
+
+        height: 190px;
+    }
+
+
+    .intro-title {
+        font-size: 35px;
+
+        letter-spacing: 4px;
+    }
+
+
+    .intro-subtitle {
+        font-size: 9px;
+
+        letter-spacing: 4px;
+    }
+
+
+    .hero-logo {
+        width: 150px;
+
+        height: 150px;
+    }
+
+
+    .hero h1 {
+        font-size: 60px;
+    }
+
+
+    .hero h2 {
+        font-size: 11px;
+
+        letter-spacing: 6px;
+    }
+
+
+    .hero-buttons {
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+
+    .section {
+        padding:
+            80px 5%;
+    }
+
+
+    .section-heading h2 {
+        font-size: 42px;
+    }
+
+
+    .about-grid {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+
+
+    .about-text h3 {
+        font-size: 45px;
+    }
+
+
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .gallery-item {
+        width: 220px;
+
+        height: 300px;
+    }
+
+
+    .instagram-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 8px;
+    }
+
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .review-form-container {
+        padding: 25px 18px;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 400px) {
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+
+    .intro-logo {
+        width: 160px;
+
+        height: 160px;
+    }
+
+
+    .instagram-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
